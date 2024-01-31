@@ -23,6 +23,8 @@ const artistString = artists.join(", ");
     />
   </picture>
   <div class="p-1 flex justify-center items-center truncate text-white">
-    <h4 class="font-bold text-lg">{title}</h4>
+    <h4 class="font-bold text-lg" transition:name=`playlist ${id} title`>
+      {title}
+    </h4>
   </div>
 </a>
