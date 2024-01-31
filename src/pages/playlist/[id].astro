@@ -13,16 +13,32 @@ const playlistSongs = songs.filter(
 <Layout title="Spotify clone">
   <div
     id="playlist-container"
-    class="relative transition-all duration 1000 bg-[#2c4b53]"
+    class="text-white p-6 relative transition-all duration 1000 bg-[#2c4b53] overflow-x-hidden"
     transition:name=`playlist ${id} box`
   >
-    <div class="relative z-10 px-6 pt-10">
-      <div class="flex flex-wrap mt-6 gap-4">
-        <!-- {playlists.map((playlist) => <PlayListItemCard playlist={playlist} />)} -->
+    <header class="flex gap-8 py-8 relative z-10 items-end">
+      <picture class="w-60 h-60">
+        <img
+          src={playlist?.cover}
+          alt={`cover of ${playlist?.title}`}
+          class="rounded-md shadow-2xl"
+          transition:name=`playlist ${playlist?.id} image`
+        />
+      </picture>
+      <div>
+        <span>Playlist</span>
+        <h1 class="text-9xl font-black mb-3">
+          {playlist?.title}
+          <span></span>
+        </h1>
+        <span transition:name=`playlist ${playlist?.id} title`
+          >{playlist?.artists.join(", ")}</span
+        >
       </div>
-    </div>
+    </header>
+
     <div
-      class="absolute inset-0 bg-gradient-to-t from-[#121212] via-zinc-900/80"
+      class="absolute inset-0 bg-gradient-to-b from-transparent to-[#00000080]"
     >
     </div>
   </div>
