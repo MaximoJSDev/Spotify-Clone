@@ -1,3 +1,4 @@
+import { usePlayerStore } from "@/store/playerStore";
 import { useEffect, useRef, useState } from "react"
 
 export const Pause = ({ className }) => (
@@ -9,21 +10,22 @@ export const Play = ({ className }) => (
 )
 
 export function Player () {
-  const [isPlaying, setIsPlaying] = useState();
-  const [currentSong, setCurrentSong] = useState();
+  const {currentMusic, isPlaying, setIsPlaying } = usePlayerStore(state => state)
   const audioRef = useRef();
 
-  useEffect(() => {
-    audioRef.current.src = "/music/1/01.mp3"
-  }, [])
+  useEffect(()=>{
+    isPlaying ? audioRef.current.play() : audioRef.current.pause()
+  },[isPlaying])
+  useEffect(()=>{
+    const {song, songs, playlist } = currentMusic;
+    if (song) {
+      const src = `/music/${playlist?.id}/0${song.id}.mp3`;
+      audioRef.current.src = src;
+      audioRef.current.play()
+    }
+  },[currentMusic])
 
   const handleClick = () => {
-    if(isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play()
-      audioRef.current.volume = 0.5
-    }
     setIsPlaying(!isPlaying)
   }
 
