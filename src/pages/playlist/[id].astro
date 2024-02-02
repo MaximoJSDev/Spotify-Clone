@@ -1,8 +1,9 @@
 ---
 import MusicsTable from "@/components/MusicsTable.astro";
-import Layout from "../../layouts/Layout.astro";
-import { allPlaylists, songs } from "@/lib/data";
+import Layout from "@/layouts/Layout.astro";
+import { allPlaylists, playlists, songs } from "@/lib/data";
 import { CardPlayButton } from "@/components/CardPlayButton";
+import NextPlaylist from "@/components/NextPlaylist.astro";
 
 const { id } = Astro.params;
 const playlist = allPlaylists.find((playlist) => playlist.id === id);
@@ -10,7 +11,14 @@ const playlistSongs = songs.filter(
   (song) => song.albumId === playlist?.albumId,
 );
 const color = playlist?.color.accent;
-console.log(playlist);
+const getNextID = (a: any, b: number) => {
+  const nextID = parseInt(a) + b;
+  const validateID = nextID < 1 || nextID > playlists.length;
+  const clases = validateID
+    ? "opacity-70 cursor-not-allowed pointer-events-none"
+    : "";
+  return [nextID, clases];
+};
 ---
 
 <Layout title="Spotify clone">
@@ -19,8 +27,12 @@ console.log(playlist);
     class="text-white relative transition-all duration 1000 overflow-x-hidden"
   >
     <header style={`background-color: ${color}`} class=`relative`>
+      <div class="relative z-20 flex py-4 px-6 gap-2">
+        <NextPlaylist rotate="180" data={getNextID(id, -1)} />
+        <NextPlaylist rotate="0" data={getNextID(id, 1)} />
+      </div>
       <div
-        class="relative z-20 flex items-end gap-8 pt-20 pb-6 px-6"
+        class="relative z-20 flex items-end gap-8 py-6 px-6"
         transition:name=`playlist ${id} box`
       >
         <picture class="w-56 h-56">
