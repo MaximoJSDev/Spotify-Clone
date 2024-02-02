@@ -11,10 +11,10 @@ const artistString = artists.join(", ");
 ---
 
 <article
-  class="relative group w-1/3 bg-zinc-500/30 hover:bg-zinc-800 shadow-lg hover:shadow-xl transition-all duration-1000 rounded-md"
+  class="w-full relative group lg:w-[calc(50%-8px)] xl:w-[calc(33%-8px)] bg-zinc-500/30 hover:bg-white/20 shadow-lg hover:shadow-xl transition-all duration-1000 rounded-md"
 >
   <div
-    class="absolute right-4 bottom-0 translate-y-4 opacity-0 transition-all duration-500 group-hover:-translate-y-4 group-hover:opacity-100 z-10"
+    class="absolute right-4 bottom-0 opacity-0 transition duration-300 group-hover:-translate-y-4 group-hover:opacity-100 z-10"
   >
     <CardPlayButton id={id} client:visible />
   </div>
