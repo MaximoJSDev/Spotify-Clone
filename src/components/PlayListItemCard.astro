@@ -6,11 +6,11 @@ interface Props {
 }
 
 const { playlist } = Astro.props;
-const { id, cover, title, artists, color } = playlist;
-const artistString = artists.join(", ");
+const { id, cover, title, color } = playlist;
 ---
 
 <article
+  data-color={color.dark}
   class="w-full relative group lg:w-[calc(50%-8px)] xl:w-[calc(33%-8px)] bg-zinc-500/30 hover:bg-white/20 shadow-lg hover:shadow-xl transition-all duration-1000 rounded-md"
 >
   <div

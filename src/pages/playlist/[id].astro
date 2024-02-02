@@ -1,7 +1,6 @@
 ---
 import MusicsTable from "@/components/MusicsTable.astro";
 import Layout from "../../layouts/Layout.astro";
-import PlayListItemCard from "@/components/PlayListItemCard.astro";
 import { allPlaylists, songs } from "@/lib/data";
 import { CardPlayButton } from "@/components/CardPlayButton";
 
@@ -10,6 +9,8 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
 const playlistSongs = songs.filter(
   (song) => song.albumId === playlist?.albumId,
 );
+const color = playlist?.color.accent;
+console.log(playlist);
 ---
 
 <Layout title="Spotify clone">
@@ -17,7 +18,7 @@ const playlistSongs = songs.filter(
     id="playlist-container"
     class="text-white relative transition-all duration 1000 overflow-x-hidden"
   >
-    <header class="bg-[#2c4b53] relative">
+    <header style={`background-color: ${color}`} class=`relative`>
       <div
         class="relative z-20 flex items-end gap-8 pt-20 pb-6 px-6"
         transition:name=`playlist ${id} box`
@@ -48,10 +49,11 @@ const playlistSongs = songs.filter(
       >
       </div>
     </header>
-    <section class="flex flex-col gap-y-4">
+    <section>
       <div class="relative p-6">
         <div
-          class="h-[232px] absolute inset-0 bg-[#2c4b53] bg-gradient-to-b from-[#00000099] to-[#121212]"
+          style={`background-color: ${color}`}
+          class="h-[232px] absolute inset-0 bg-gradient-to-b from-[#000000a6] to-[#121212]"
         >
         </div>
         <div class="relative">

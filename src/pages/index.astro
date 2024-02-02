@@ -12,13 +12,23 @@ import Greeting from "@/components/Greeting.svelte";
   >
     <div class="relative z-10 p-6 pt-10">
       <Greeting />
-      <div class="flex flex-wrap mt-6 gap-4">
+      <div class="playlists flex flex-wrap mt-6 gap-4">
         {playlists.map((playlist) => <PlayListItemCard playlist={playlist} />)}
       </div>
     </div>
     <div
-      class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0000004b] to-[#121212]"
+      class="absolute inset-0 bg-gradient-to-b from-transparent to-[#121212]"
     >
     </div>
   </div>
 </Layout>
+<script defer>
+  var playlistContainer = document.querySelector("#playlist-container");
+  var playlists = document.querySelectorAll(".playlists article");
+
+  for (const child of playlists) {
+    child.addEventListener("mouseenter", () => {
+      playlistContainer.style.background = child.dataset.color;
+    });
+  }
+</script>
