@@ -139,13 +139,13 @@ export function Player () {
   }
 
   return (
-    <div className="text-white flex flex-row justify-between w-full p-2 z-50">
+    <div className="text-white flex flex-row justify-between w-full pt-2 z-50">
       <div>
         <CurrentSong {...currentMusic.song} />
       </div>
       
       <div className="grid place-content-center gap-4 flex-1">
-        <div className="flex justify-center flex-col items-center">
+        <div className="flex justify-center flex-col items-center gap-y-2">
           <button className="bg-white rounded-full p-2" onClick={handleClick}>
             {
               isPlaying ? <Pause /> : <Play />
