@@ -25,6 +25,7 @@ export function CardPlayButton ({id, size="small"}) {
           playlist,
           song: songs[0]
         });
+        console.log(currentMusic);
       })
   }
   const iconClassName = size === "small" ? "h-4 w-4" : "h-6 w-6"

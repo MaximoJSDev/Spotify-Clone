@@ -1,8 +1,8 @@
 ---
-import MusicsTable from "@/components/MusicsTable.astro";
 import Layout from "@/layouts/Layout.astro";
 import { allPlaylists, playlists, songs } from "@/lib/data";
 import { CardPlayButton } from "@/components/CardPlayButton";
+import { MusicsTable } from "@/components/MusicsTable";
 import NextPlaylist from "@/components/NextPlaylist.astro";
 
 const { id } = Astro.params;
@@ -10,6 +10,7 @@ const playlist = allPlaylists.find((playlist) => playlist.id === id);
 const playlistSongs = songs.filter(
   (song) => song.albumId === playlist?.albumId,
 );
+
 const color = playlist?.color.accent;
 const getNextID = (a: any, b: number) => {
   const nextID = parseInt(a) + b;
@@ -27,7 +28,7 @@ const getNextID = (a: any, b: number) => {
     class="text-white relative transition-all duration 1000 overflow-x-hidden"
   >
     <header style={`background-color: ${color}`} class=`relative`>
-      <div class="relative z-20 flex py-4 px-6 gap-2">
+      <div class="relative z-20 flex py-4 px-6 gap-2 select-none">
         <NextPlaylist rotate="180" data={getNextID(id, -1)} />
         <NextPlaylist rotate="0" data={getNextID(id, 1)} />
       </div>
@@ -69,11 +70,11 @@ const getNextID = (a: any, b: number) => {
         >
         </div>
         <div class="relative">
-          <CardPlayButton id={id} client:load size="large" />
+          <CardPlayButton id={id} size="large" client:load />
         </div>
       </div>
       <div class="px-6 relative">
-        <MusicsTable songs={playlistSongs} />
+        <MusicsTable songs={playlistSongs} playlist={playlist} client:load />
       </div>
     </section>
   </div>
