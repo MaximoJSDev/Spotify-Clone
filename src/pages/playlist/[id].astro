@@ -29,8 +29,8 @@ const getNextID = (a: any, b: number) => {
   >
     <header style={`background-color: ${color}`} class=`relative`>
       <div class="relative z-20 flex py-4 px-6 gap-2 select-none">
-        <NextPlaylist rotate="180" data={getNextID(id, -1)} />
-        <NextPlaylist rotate="0" data={getNextID(id, 1)} />
+        <NextPlaylist rotate={true} data={getNextID(id, -1)} />
+        <NextPlaylist data={getNextID(id, 1)} />
       </div>
       <div
         class="relative z-20 flex items-end gap-8 py-6 px-6"

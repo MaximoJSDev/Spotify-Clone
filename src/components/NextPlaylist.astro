@@ -2,15 +2,17 @@
 import Arrow from "@/icons/Arrow.astro";
 interface Props {
   data: any;
-  rotate: string;
+  rotate?: boolean;
 }
-const { data, rotate: degrees } = Astro.props;
+const { data, rotate = false } = Astro.props;
 const [nextID, clases] = data;
 ---
 
 <a
-  href=`/playlist/${nextID}`
-  class=`cursor-pointer p-2 rounded-full bg-black/80 rotate-${degrees} ${clases}`
+  href={`/playlist/${nextID}`}
+  class={`cursor-pointer p-2 rounded-full bg-black/80 ${
+    rotate && "rotate-180"
+  } ${clases}`}
 >
   <Arrow />
 </a>
