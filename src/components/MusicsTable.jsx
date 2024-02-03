@@ -26,7 +26,7 @@ export function MusicsTable ({songs,playlist}) {
       <tbody>
         <tr className="h-[16px]"></tr>
         { songs.map((song, index) => (
-            <tr key={index} onClick={() => handleClick(song)} className="text-sm text-gray-400 hover:bg-white/10 transition duration-300 px-2">
+            <tr key={index} onClick={() => handleClick(song)} className="text-sm px-2 cursor-pointer text-gray-400 hover:bg-white/10 transition duration-300">
               <td className="px-3 py-2 pl-6 w-3 rounded-tl-lg rounded-bl-lg text-base">
                 <span>
                   {index + 1}
