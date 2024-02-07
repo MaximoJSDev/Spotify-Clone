@@ -10,21 +10,21 @@ import { playlists } from "@/lib/data";
 <nav class="flex gap-2 flex-col flex-1">
   <div class="bg-[#121212] px-1 py-2 rounded-lg">
     <ul>
-      <SideMenuItem>
-        <HomeIcon href="/" />
-        Home
+      <SideMenuItem href="/">
+        <HomeIcon />
+        <span class="hidden md:flex">Home</span>
       </SideMenuItem>
-      <SideMenuItem>
-        <SearchIcon href="/#" />
-        Search
+      <SideMenuItem href="#search">
+        <SearchIcon />
+        <span class="hidden md:flex">Search</span>
       </SideMenuItem>
     </ul>
   </div>
   <div class="bg-[#121212] px-1 py-1 rounded-lg flex-1">
     <ul>
-      <SideMenuItem>
-        <LibraryIcon href="/" />
-        Tu biblioteca
+      <SideMenuItem href="#library">
+        <LibraryIcon />
+        <span class="hidden md:flex">Tu biblioteca</span>
       </SideMenuItem>
       {playlists.map((playlist) => <SideMenuCard playlist={playlist} />)}
     </ul>

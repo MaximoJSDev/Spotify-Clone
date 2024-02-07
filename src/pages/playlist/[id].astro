@@ -33,10 +33,10 @@ const getNextID = (a: any, b: number) => {
         <NextPlaylist data={getNextID(id, 1)} />
       </div>
       <div
-        class="relative z-20 flex items-end gap-8 py-6 px-6"
+        class="relative z-20 flex items-end gap-4 xl:gap-8 py-6 px-2 md:px-6"
         transition:name=`playlist ${id} box`
       >
-        <picture class="w-56 h-56">
+        <picture class="w-56 h-56 flex items-center">
           <img
             src={playlist?.cover}
             alt={`cover of ${playlist?.title}`}
@@ -46,7 +46,7 @@ const getNextID = (a: any, b: number) => {
         </picture>
         <div>
           <span>Playlist</span>
-          <h1 class="text-8xl font-black mb-3">
+          <h1 class="text-4xl lg:text-5xl 2xl:text-8xl font-black mb-3">
             {playlist?.title}
           </h1>
           <span transition:name=`playlist ${playlist?.id} title`>
@@ -63,7 +63,7 @@ const getNextID = (a: any, b: number) => {
       </div>
     </header>
     <section>
-      <div class="relative p-6">
+      <div class="relative py-6 px-2 md:px-6">
         <div
           style={`background-color: ${color}`}
           class="h-[232px] absolute inset-0 bg-gradient-to-b from-[#000000a6] to-[#121212]"
@@ -73,7 +73,7 @@ const getNextID = (a: any, b: number) => {
           <CardPlayButton id={id} size="large" client:load />
         </div>
       </div>
-      <div class="px-6 relative">
+      <div class="relative px-2 md:px-6">
         <MusicsTable songs={playlistSongs} playlist={playlist} client:load />
       </div>
     </section>

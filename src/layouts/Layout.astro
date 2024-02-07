@@ -21,24 +21,29 @@ const { title } = Astro.props;
 		<ViewTransitions fallback="none" />
 	</head>
 	<body>
-		<div id="app" class="relative h-screen p-2 gap-2">
-			<aside class="[grid-area:aside] rounded-lg flex-col flex overflow-y-auto">
+		<div
+			id="app"
+			class="relative h-screen lg:p-2 gap-2
+				grid grid-cols-1 sm:grid-cols-[1fr_2fr] lg:grid-cols-[420px_1fr]
+				[grid-template-areas:'main''player'] sm:[grid-template-areas:'aside_main_main''player_player_player']"
+		>
+			<aside
+				class="[grid-area:aside] rounded-lg flex-col sm:flex overflow-y-auto hidden"
+			>
 				<AsideMenu />
 			</aside>
-			<main class="[grid-area:main] rounded-lg bg-[#121212] overflow-y-auto">
+			<main class="[grid-area:main] rounded-lg bg-[#121212] overflow-y-clip">
 				<slot />
 			</main>
-			<footer class="[grid-area:player] px-2">
+			<footer class="[grid-area:player] px-2 sticky bottom-0 bg-black">
 				<Player client:load transition:name="media-player" transition:persist />
 			</footer>
 		</div>
 		<style>
 			#app {
-				display: grid;
-				grid-template-areas:
+				/* grid-template-areas:
 					"aside main main"
-					"player player player";
-				grid-template-columns: 420px 1fr;
+					"player player player"; */
 				grid-template-rows: 1fr auto;
 			}
 		</style>

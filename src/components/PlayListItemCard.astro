@@ -11,7 +11,7 @@ const { id, cover, title, color } = playlist;
 
 <article
   data-color={color.dark}
-  class="w-full relative group lg:w-[calc(50%-8px)] xl:w-[calc(33%-8px)] bg-zinc-500/30 hover:bg-white/20 shadow-lg hover:shadow-xl transition-all duration-1000 rounded-md overflow-hidden"
+  class="w-64 lg:w-[calc(50%-8px)] xl:w-[calc(33%-8px)] relative group lg:grow-0 grow bg-zinc-500/30 hover:bg-white/20 shadow-lg hover:shadow-xl transition-all duration-1000 rounded-md overflow-hidden"
 >
   <div
     class="absolute right-4 bottom-0 opacity-0 transition duration-300 group-hover:-translate-y-4 group-hover:opacity-100 z-10"
@@ -20,7 +20,7 @@ const { id, cover, title, color } = playlist;
   </div>
   <a
     href={`/playlist/${id}`}
-    class="w-full playlist-item flex relative overflow-hidden item-center gap-4"
+    class="w-full playlist-item flex relative overflow-hidden item-center gap-4 pr-2"
     transition:name=`playlist ${id} box`
   >
     <picture class="h-full w-20 flex-none">
@@ -31,8 +31,11 @@ const { id, cover, title, color } = playlist;
         transition:name=`playlist ${id} image`
       />
     </picture>
-    <div class="p-1 flex justify-center items-center truncate text-white">
-      <h4 class="font-bold text-lg" transition:name=`playlist ${id} title`>
+    <div class="lg:p-1 flex items-center truncate text-white">
+      <h4
+        class="font-bold text-lg whitespace-nowrap overflow-hidden text-ellipsis"
+        transition:name=`playlist ${id} title`
+      >
         {title}
       </h4>
     </div>
