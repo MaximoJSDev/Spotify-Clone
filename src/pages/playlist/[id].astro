@@ -11,6 +11,11 @@ const playlistSongs = songs.filter(
   (song) => song.albumId === playlist?.albumId,
 );
 
+const playlistDuration = playlistSongs.reduce((contador, playlist) => {
+  let duration = parseFloat(playlist.duration.replace(":", "."));
+  return contador + duration;
+}, 0);
+
 const color = playlist?.color.accent;
 const getNextID = (a: any, b: number) => {
   const nextID = parseInt(a) + b;
@@ -53,7 +58,8 @@ const getNextID = (a: any, b: number) => {
             {playlist?.artists.join(", ")}
           </span>
           <span class="block"
-            >• {playlistSongs.length} Canciones, 3 horas aproximadamente</span
+            >• {playlistSongs.length} Canciones, {Math.round(playlistDuration)} minutos
+            aproximadamente</span
           >
         </div>
       </div>
