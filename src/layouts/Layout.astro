@@ -40,17 +40,12 @@ const { title } = Astro.props;
 			</footer>
 		</div>
 		<style>
-			#app {
-				/* grid-template-areas:
-					"aside main main"
-					"player player player"; */
-				grid-template-rows: 1fr auto;
-			}
-		</style>
-		<style is:global>
-			html {
+			body {
 				font-family: system-ui, sans-serif;
 				background: #000;
+			}
+			#app {
+				grid-template-rows: 1fr auto;
 			}
 		</style>
 	</body>
